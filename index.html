@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convite 17:77 ✨</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <main class="wrap">
+      <section class="card" role="region" aria-label="Convite para assistir um filme juntas">
+        <header class="top">
+          <div class="pill" title="nosso detalhe">17:77</div>
+          <div class="sparkles" aria-hidden="true">✦ ✧ ✦</div>
+        </header>
+
+        <div class="content">
+          <h1 class="title">Filme juntinhas?</h1>
+
+          <p class="subtitle">
+            Eu ainda tô em viagem, mas chego em casa por volta das <strong>19h</strong>.
+            Queria um tempinho de qualidade contigo hoje — mesmo de longe —
+            bem <span class="highlight">leve</span> e sem pressão 💗
+          </p>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div class="info">
+            <div class="row">
+              <span class="label">Plano</span>
+              <span class="value">Um filme ao mesmo tempo (cada uma na sua casa)</span>
+            </div>
+            <div class="row">
+              <span class="label">Hoje</span>
+              <span class="value" id="todayLabel">hoje à noite ✨</span>
+            </div>
+          </div>
+
+          <div class="question">
+            <h2 class="questionTitle">Qual horário fica melhor pra ti?</h2>
+            <p class="questionHint">
+              Eu só queria descansar um pouquinho quando eu chegar.
+              E se tu estiver cansada também, tá tudo bem marcar outro dia 🤍
+            </p>
+
+            <div class="buttons" role="group" aria-label="Escolha de horário">
+              <button class="btn primary" data-time="20:30">20:30</button>
+              <button class="btn soft" data-time="21:00">21:00</button>
+              <button class="btn ghost wide" data-time="OUTRO_DIA">Outro dia (sem pressão)</button>
+            </div>
+          </div>
+
+          <div class="result" id="result" hidden>
+            <div class="resultBadge" id="badge">Combinado</div>
+            <p class="resultText" id="resultText"></p>
+
+            <div class="miniActions">
+              <button class="btn ghost" id="copyTextBtn" type="button">Copiar mensagem</button>
+              <a class="btn ghost" id="waLink" href="#" target="_blank" rel="noreferrer">Abrir no Whats</a>
+            </div>
+
+            <p class="smallNote" id="smallNote">
+              eu só queria um tempinho contigo hoje 🤍
+            </p>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span class="footerLeft">feito com carinho</span>
+          <span class="footerRight">💌</span>
+        </footer>
+      </section>
+
+      <p class="tiny">
+        Dica: se quiser, troca o texto no <code>index.html</code> (tipo “filme”, “hoje”, etc).
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
