@@ -1,84 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convite 17:77 ✨</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Nossa primeira viagem</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  <body>
-    <div class="bg-glow" aria-hidden="true"></div>
+<body>
 
-    <main class="wrap">
-      <section class="card" role="region" aria-label="Convite para assistir um filme juntas">
-        <header class="top">
-          <div class="pill" title="nosso detalhe">17:77</div>
-          <div class="sparkles" aria-hidden="true">✦ ✧ ✦</div>
-        </header>
+  <section class="hero">
+    <h1>Nossa primeira viagem 🌄</h1>
+    <p>Um final de semana para viver com calma, explorar e aproveitar cada momento juntas</p>
+    <span>Grão-Pará • Braço do Norte • o caminho de volta</span>
+  </section>
 
-        <div class="content">
-          <h1 class="title">Filme juntinhas?</h1>
+  <main class="container">
 
-          <p class="subtitle">
-            Eu ainda tô em viagem, mas chego em casa por volta das <strong>19h</strong>.
-            Queria um tempinho de qualidade contigo hoje — mesmo de longe —
-            bem <span class="highlight">leve</span> e sem pressão 💗
-          </p>
+    <section class="block center">
+      <p>
+        A ideia dessa viagem não é fazer tudo.  
+        É aproveitar o caminho, sem pressa, e decidir no momento o que faz mais sentido pra gente.
+      </p>
+    </section>
 
-          <div class="divider" aria-hidden="true"></div>
+    <section class="card">
+      <h2>Sexta-feira</h2>
+      <p>
+        Saída de Jaraguá do Sul, chegada no Airbnb em Braço do Norte, check-in e descanso.
+      </p>
+    </section>
 
-          <div class="info">
-            <div class="row">
-              <span class="label">Plano</span>
-              <span class="value">Um filme ao mesmo tempo (cada uma na sua casa)</span>
-            </div>
-            <div class="row">
-              <span class="label">Hoje</span>
-              <span class="value" id="todayLabel">hoje à noite ✨</span>
-            </div>
-          </div>
+    <section class="card">
+      <h2>Sábado</h2>
 
-          <div class="question">
-            <h2 class="questionTitle">Qual horário fica melhor pra ti?</h2>
-            <p class="questionHint">
-              Eu só queria descansar um pouquinho quando eu chegar.
-              E se tu estiver cansada também, tá tudo bem marcar outro dia 🤍
-            </p>
+      <div class="item">
+        <strong>Manhã</strong>
+        <p>Sair até 07:00 e conhecer as pirâmides em Grão-Pará com calma.</p>
+      </div>
 
-            <div class="buttons" role="group" aria-label="Escolha de horário">
-              <button class="btn primary" data-time="20:30">20:30</button>
-              <button class="btn soft" data-time="21:00">21:00</button>
-              <button class="btn ghost wide" data-time="OUTRO_DIA">Outro dia (sem pressão)</button>
-            </div>
-          </div>
+      <div class="item">
+        <strong>Tarde</strong>
+        <p>Trilha, natureza e tempo sem pressa.</p>
+      </div>
 
-          <div class="result" id="result" hidden>
-            <div class="resultBadge" id="badge">Combinado</div>
-            <p class="resultText" id="resultText"></p>
+      <div class="item">
+        <strong>Noite</strong>
 
-            <div class="miniActions">
-              <button class="btn ghost" id="copyTextBtn" type="button">Copiar mensagem</button>
-              <a class="btn ghost" id="waLink" href="#" target="_blank" rel="noreferrer">Abrir no Whats</a>
-            </div>
-
-            <p class="smallNote" id="smallNote">
-              eu só queria um tempinho contigo hoje 🤍
-            </p>
-          </div>
+        <div class="option">
+          <p><b>Se estivermos com energia:</b> jantar em Grão-Pará</p>
         </div>
 
-        <footer class="footer">
-          <span class="footerLeft">feito com carinho</span>
-          <span class="footerRight">💌</span>
-        </footer>
-      </section>
+        <div class="option">
+          <p><b>Se estivermos cansadas:</b> voltar, pedir algo e descansar</p>
+        </div>
+      </div>
+    </section>
 
-      <p class="tiny">
-        Dica: se quiser, troca o texto no <code>index.html</code> (tipo “filme”, “hoje”, etc).
+    <section class="block">
+      <h2>Domingo — vamos decidir juntas</h2>
+
+      <div class="grid">
+
+        <div class="card soft">
+          <h3>🌄 Acordar cedo</h3>
+          <p>
+            Subir a Serra do Corvo Branco, parar nos mirantes e viver algo mais marcante.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>😌 Acordar com calma</h3>
+          <p>
+            Café sem pressa, estrada tranquila e paradas no caminho.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Possíveis paradas</h2>
+      <p>
+        Almoço no caminho, paisagens, e se ainda tivermos vontade, passar por Pomerode.
       </p>
-    </main>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <section class="final">
+      <p>Não precisa ser perfeito.<br/>Só precisa ser nosso.</p>
+    </section>
+
+  </main>
+
+</body>
 </html>
