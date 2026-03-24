@@ -11,13 +11,15 @@ function setRoute(route) {
   render();
 }
 
-function step({ time, title, desc, image }) {
+function card({ time, title, desc, image }) {
   return `
-    <div class="step">
+    <div class="card">
       ${image ? `<img src="${image}">` : ""}
-      <div class="time">${time}</div>
-      <div class="title">${title}</div>
-      <div class="desc">${desc}</div>
+      <div class="card-content">
+        <div class="time">${time}</div>
+        <div class="title">${title}</div>
+        <div class="desc">${desc}</div>
+      </div>
     </div>
   `;
 }
@@ -25,15 +27,14 @@ function step({ time, title, desc, image }) {
 function render() {
   const content = document.getElementById("content");
 
-  // SEXTA
   if (activeDay === 1) {
     content.innerHTML = `
-      ${step({
+      ${card({
         time: "17:30",
         title: "Saída de Jaraguá",
-        desc: "Início da viagem até Braço do Norte."
+        desc: "Começo da viagem até Braço do Norte."
       })}
-      ${step({
+      ${card({
         time: "23:00",
         title: "Chegada",
         desc: "Check-in e descanso."
@@ -41,21 +42,20 @@ function render() {
     `;
   }
 
-  // SÁBADO
   if (activeDay === 2) {
     content.innerHTML = `
-      ${step({
+      ${card({
         time: "09:30",
         title: "Pirâmides",
         desc: "Explorar o local pela manhã.",
         image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
       })}
-      ${step({
+      ${card({
         time: "Tarde",
         title: "Trilha",
         desc: "Subida e fotos."
       })}
-      ${step({
+      ${card({
         time: "Noite",
         title: "Descanso",
         desc: "Volta para o Airbnb."
@@ -63,7 +63,6 @@ function render() {
     `;
   }
 
-  // DOMINGO
   if (activeDay === 3) {
     content.innerHTML = `
       <div class="routes">
@@ -74,36 +73,36 @@ function render() {
       ${
         activeRoute === "aventura"
           ? `
-        ${step({
+        ${card({
           time: "08:00",
           title: "Serra do Corvo Branco",
           desc: "Subida com mirantes.",
           image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
         })}
-        ${step({
+        ${card({
           time: "Almoço",
           title: "Rio do Sul",
           desc: "Parada para almoço."
         })}
-        ${step({
+        ${card({
           time: "Tarde",
           title: "Pomerode",
-          desc: "Parada rápida para café ou doce.",
+          desc: "Parada rápida para café.",
           image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
         })}
       `
           : `
-        ${step({
+        ${card({
           time: "Manhã",
           title: "Saída tranquila",
           desc: "Sem pressa."
         })}
-        ${step({
+        ${card({
           time: "Almoço",
           title: "Rio do Sul",
           desc: "Parada."
         })}
-        ${step({
+        ${card({
           time: "Tarde",
           title: "Pomerode",
           desc: "Passeio com calma.",
@@ -115,5 +114,4 @@ function render() {
   }
 }
 
-// iniciar
 render();
