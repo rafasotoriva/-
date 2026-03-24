@@ -1,95 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>Nossa primeira viagem</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Roteiro de Viagem</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <section class="hero">
-    <h1>Nossa primeira viagem 🌄</h1>
-    <p>Um final de semana para viver com calma, explorar e aproveitar cada momento juntas</p>
-    <span>Grão-Pará • Braço do Norte • o caminho de volta</span>
-  </section>
+<div class="container">
 
-  <main class="container">
+  <h1>Roteiro de fim de semana</h1>
+  <p class="subtitle">Jaraguá → Pirâmides → Volta</p>
 
-    <section class="block center">
-      <p>
-        A ideia dessa viagem não é fazer tudo.  
-        É aproveitar o caminho, sem pressa, e decidir no momento o que faz mais sentido pra gente.
-      </p>
-    </section>
+  <!-- DIAS -->
+  <div class="tabs">
+    <button onclick="setDay(1)">Sex</button>
+    <button onclick="setDay(2)">Sáb</button>
+    <button onclick="setDay(3)">Dom</button>
+  </div>
 
-    <section class="card">
-      <h2>Sexta-feira</h2>
-      <p>
-        Saída de Jaraguá do Sul, chegada no Airbnb em Braço do Norte, check-in e descanso.
-      </p>
-    </section>
+  <!-- CONTEÚDO -->
+  <div id="content"></div>
 
-    <section class="card">
-      <h2>Sábado</h2>
+</div>
 
-      <div class="item">
-        <strong>Manhã</strong>
-        <p>Sair até 07:00 e conhecer as pirâmides em Grão-Pará com calma.</p>
-      </div>
-
-      <div class="item">
-        <strong>Tarde</strong>
-        <p>Trilha, natureza e tempo sem pressa.</p>
-      </div>
-
-      <div class="item">
-        <strong>Noite</strong>
-
-        <div class="option">
-          <p><b>Se estivermos com energia:</b> jantar em Grão-Pará</p>
-        </div>
-
-        <div class="option">
-          <p><b>Se estivermos cansadas:</b> voltar, pedir algo e descansar</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="block">
-      <h2>Domingo — vamos decidir juntas</h2>
-
-      <div class="grid">
-
-        <div class="card soft">
-          <h3>🌄 Acordar cedo</h3>
-          <p>
-            Subir a Serra do Corvo Branco, parar nos mirantes e viver algo mais marcante.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>😌 Acordar com calma</h3>
-          <p>
-            Café sem pressa, estrada tranquila e paradas no caminho.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Possíveis paradas</h2>
-      <p>
-        Almoço no caminho, paisagens, e se ainda tivermos vontade, passar por Pomerode.
-      </p>
-    </section>
-
-    <section class="final">
-      <p>Não precisa ser perfeito.<br/>Só precisa ser nosso.</p>
-    </section>
-
-  </main>
-
+<script src="script.js"></script>
 </body>
 </html>
