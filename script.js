@@ -48,7 +48,7 @@ function render() {
         time: "09:30",
         title: "Pirâmides",
         desc: "Explorar o local pela manhã.",
-        image: "images/piramides.jpg"
+        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
       })}
       ${step({
         time: "Tarde",
@@ -78,7 +78,7 @@ function render() {
           time: "08:00",
           title: "Serra do Corvo Branco",
           desc: "Subida com mirantes.",
-          image: "images/serra.jpg"
+          image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
         })}
         ${step({
           time: "Almoço",
@@ -88,8 +88,8 @@ function render() {
         ${step({
           time: "Tarde",
           title: "Pomerode",
-          desc: "Parada rápida.",
-          image: "images/pomerode.jpg"
+          desc: "Parada rápida para café ou doce.",
+          image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
         })}
       `
           : `
@@ -107,7 +107,7 @@ function render() {
           time: "Tarde",
           title: "Pomerode",
           desc: "Passeio com calma.",
-          image: "images/pomerode.jpg"
+          image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80"
         })}
       `
       }
