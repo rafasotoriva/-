@@ -1,274 +1,190 @@
-import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Car, 
-  Mountain, 
-  Coffee, 
-  Utensils, 
-  Moon, 
-  Sun, 
-  Compass, 
-  Heart, 
-  Sparkles, 
-  Clock, 
-  Camera,
-  Navigation
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const App = () => {
-  const [activeDay, setActiveDay] = useState(1); // 1: Sex, 2: Sab, 3: Dom
-  const [activeRoute, setActiveRoute] = useState('active');
-  const [fridayDecision, setFridayDecision] = useState(null);
+<title>Nossa Jornada</title>
 
-  const carPosition = {
-    1: "5%",
-    2: "45%",
-    3: "85%"
-  };
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fffafa;
+  color: #1e293b;
+}
 
-  const Step = ({ title, time, icon: Icon, description, active = true, children }) => (
-    <div className={`relative flex gap-6 pb-12 items-start transition-all duration-700 ${active ? 'opacity-100 translate-x-0' : 'opacity-20 -translate-x-4 blur-sm'}`}>
-      <div className="flex flex-col items-center">
-        <div className={`p-4 rounded-2xl ${active ? 'bg-rose-400 text-white rotate-0' : 'bg-rose-50 text-rose-200 rotate-12'} shadow-md z-10 transition-all duration-500`}>
-          <Icon size={20} />
-        </div>
-        <div className="w-[1px] h-full bg-rose-100 absolute top-14 left-[27px]"></div>
-      </div>
-      <div className={`flex-1 overflow-hidden rounded-[2.5rem] border bg-white/90 backdrop-blur-md transition-all duration-500 group ${active ? 'border-rose-100/50 shadow-xl shadow-rose-100/10' : 'border-transparent'}`}>
-        <div className="p-8">
-          <div className="flex justify-between items-center mb-3">
-            <div className="flex items-center gap-2">
-              <Clock size={12} className="text-rose-400" />
-              <span className="text-[10px] font-bold text-rose-400 uppercase tracking-[0.2em]">{time}</span>
-            </div>
-            {active && <Sparkles size={14} className="text-rose-300 animate-pulse" />}
-          </div>
-          <h4 className="font-semibold text-slate-700 text-2xl mb-2 tracking-tight">{title}</h4>
-          <p className="text-slate-500 text-sm leading-relaxed mb-4">{description}</p>
-          {children}
-        </div>
-      </div>
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+}
+
+.hero span {
+  color: #fb7185;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #64748b;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: white;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 20px;
+}
+
+.time {
+  font-size: 12px;
+  color: #fb7185;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.desc {
+  color: #64748b;
+}
+
+.routes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+  <h1>Nossa <span>Jornada</span></h1>
+  <p class="subtitle">Jaraguá → Pirâmides → Volta</p>
+</div>
+
+<div class="tabs">
+  <button onclick="setDay(1)">Sex</button>
+  <button onclick="setDay(2)">Sáb</button>
+  <button onclick="setDay(3)">Dom</button>
+</div>
+
+<div id="content"></div>
+
+</div>
+
+<script>
+let day = 1;
+let route = "aventura";
+
+function setDay(d){
+  day = d;
+  render();
+}
+
+function setRoute(r){
+  route = r;
+  render();
+}
+
+function card(time,title,desc,img){
+  return `
+  <div class="card">
+    ${img ? `<img src="${img}">` : ""}
+    <div class="content">
+      <div class="time">${time}</div>
+      <div class="title">${title}</div>
+      <div class="desc">${desc}</div>
     </div>
-  );
+  </div>
+  `;
+}
 
-  return (
-    <div className="min-h-screen bg-[#FFFCFC] font-sans text-slate-800 selection:bg-rose-100 pb-20">
-      {/* Background Decorativo */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-rose-100/30 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-orange-50/20 rounded-full blur-[100px]"></div>
+function render(){
+  const el = document.getElementById("content");
+
+  if(day === 1){
+    el.innerHTML = `
+      ${card("17:30","Saída","Viagem até Braço do Norte")}
+      ${card("23:00","Chegada","Descanso")}
+    `;
+  }
+
+  if(day === 2){
+    el.innerHTML = `
+      ${card("09:30","Pirâmides","Explorar",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80")}
+      ${card("Tarde","Trilha","Fotos")}
+    `;
+  }
+
+  if(day === 3){
+    el.innerHTML = `
+      <div class="routes">
+        <button onclick="setRoute('aventura')">Aventura</button>
+        <button onclick="setRoute('tranquila')">Tranquila</button>
       </div>
 
-      {/* HERO SECTION */}
-      <header className="max-w-4xl mx-auto pt-16 mb-20 px-6 text-center">
-        <div className="inline-flex items-center gap-2 bg-white border border-rose-100 text-rose-500 px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.3em] uppercase mb-10 shadow-sm animate-bounce-slow">
-          <Heart size={14} className="fill-rose-500" />
-          Road Trip Especial
-        </div>
-        <h1 className="text-6xl md:text-8xl font-light text-slate-800 mb-8 tracking-tighter leading-none">
-          Nossa <span className="italic font-serif text-rose-400">Jornada</span>
-        </h1>
-        <p className="text-slate-400 text-lg max-w-lg mx-auto leading-relaxed font-light mb-10">
-          De Jaraguá às nuvens da Serra do Corvo Branco. Um roteiro desenhado com carinho.
-        </p>
-        
-        {/* Seletor de Dias */}
-        <div className="flex justify-center gap-6 mt-12">
-          {[1, 2, 3].map((day) => (
-            <button
-              key={day}
-              onClick={() => setActiveDay(day)}
-              className={`group flex flex-col items-center gap-3 transition-all duration-500 ${activeDay === day ? 'scale-110' : 'opacity-40 hover:opacity-100'}`}
-            >
-              <div className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center text-lg font-bold border-2 transition-all ${activeDay === day ? 'bg-rose-400 border-rose-400 text-white shadow-xl shadow-rose-200' : 'bg-white border-rose-100 text-rose-300'}`}>
-                0{day}
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400">
-                {day === 1 ? 'Sexta' : day === 2 ? 'Sábado' : 'Domingo'}
-              </span>
-            </button>
-          ))}
-        </div>
-      </header>
+      ${
+        route === "aventura"
+        ? `
+        ${card("08:00","Corvo Branco","Mirantes",
+        "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80")}
+        ${card("Almoço","Rio do Sul","Parada")}
+        `
+        : `
+        ${card("Manhã","Saída leve","Sem pressa")}
+        ${card("Tarde","Pomerode","Café",
+        "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80")}
+        `
+      }
+    `;
+  }
+}
 
-      {/* VISÃO GERAL COM CARRINHO ANIMADO */}
-      <section className="max-w-4xl mx-auto mb-28 px-6">
-        <div className="relative p-12 bg-white/60 border border-white rounded-[3.5rem] shadow-sm backdrop-blur-xl overflow-hidden">
-          <div className="absolute top-[55%] left-10 right-10 h-[2px] bg-dashed border-t-2 border-dashed border-rose-100/60 -z-0"></div>
-          
-          <div 
-            className="absolute top-[42%] transition-all duration-1000 ease-in-out z-20"
-            style={{ left: carPosition[activeDay], transform: 'translateX(-50%)' }}
-          >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-rose-400/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="bg-rose-500 text-white p-3.5 rounded-2xl shadow-xl shadow-rose-200 relative">
-                <Car size={26} className="animate-wiggle" />
-              </div>
-              <div className="mt-3 text-[10px] font-black text-rose-500 uppercase tracking-widest text-center whitespace-nowrap">
-                Pé na estrada!
-              </div>
-            </div>
-          </div>
+render();
+</script>
 
-          <div className="flex items-center justify-between relative z-10">
-            {[
-              { label: 'Jaraguá', sub: 'Início', active: activeDay >= 1 },
-              { label: 'Braço do Norte', sub: 'Airbnb', active: activeDay >= 1 },
-              { label: 'Grão-Pará', sub: 'Pirâmides', active: activeDay >= 2 },
-              { label: 'Serra', sub: 'Corvo Branco', active: activeDay === 3 && activeRoute === 'active' },
-              { label: 'Pomerode', sub: 'O Café', active: activeDay === 3 }
-            ].map((p, i) => (
-              <div key={i} className={`flex flex-col items-center gap-3 transition-all duration-700 ${p.active ? 'opacity-100 scale-100' : 'opacity-30 scale-90 grayscale'}`}>
-                <div className="w-5 h-5 rounded-full bg-white border-4 border-rose-200 shadow-sm"></div>
-                <div className="text-center">
-                  <div className="text-xs font-bold text-slate-700 leading-none mb-1.5">{p.label}</div>
-                  <div className="text-[9px] text-rose-400 font-bold uppercase tracking-widest">{p.sub}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTEÚDO DINÂMICO BASEADO NO DIA - CENTRALIZADO */}
-      <div className="max-w-3xl mx-auto px-6">
-        {activeDay === 1 && (
-          <div className="animate-in fade-in slide-in-from-bottom-10 duration-700">
-            <h3 className="text-3xl font-light text-slate-800 mb-12 flex items-center gap-4">
-              <span className="text-rose-400 font-serif italic text-5xl">01</span> SEXTA-FEIRA
-            </h3>
-            <Step 
-              time="17:30 — 18:00" 
-              title="Saída de Jaraguá" 
-              description="Podemos tomar um café aqui caso chegue com fome e aí vamos tranquilas até Braço do Norte, ou posso comprar algo pra ti também e levar." 
-              icon={Navigation}
-            >
-              <div className="flex gap-3 mt-4">
-                <button onClick={() => setFridayDecision('cafe')} className={`px-5 py-2.5 rounded-full text-[10px] font-bold tracking-wider transition-all ${fridayDecision === 'cafe' ? 'bg-rose-500 text-white shadow-lg shadow-rose-200' : 'bg-rose-50 text-rose-500 hover:bg-rose-100'}`}>TOMAR CAFÉ AQUI</button>
-                <button onClick={() => setFridayDecision('levar')} className={`px-5 py-2.5 rounded-full text-[10px] font-bold tracking-wider transition-all ${fridayDecision === 'levar' ? 'bg-rose-500 text-white shadow-lg shadow-rose-200' : 'bg-rose-50 text-rose-500 hover:bg-rose-100'}`}>LEVAR ALGO</button>
-              </div>
-            </Step>
-            <Step 
-              time="23:00 — 23:30" 
-              title="Chegada no Airbnb" 
-              description="Chegamos em Braço do Norte. Pedimos delivery pra jantinha ou paramos no caminho caso fique muito tarde, isso veremos conforme vamos indo." 
-              icon={Moon}
-            />
-          </div>
-        )}
-
-        {activeDay === 2 && (
-          <div className="animate-in fade-in slide-in-from-bottom-10 duration-700">
-            <h3 className="text-3xl font-light text-slate-800 mb-12 flex items-center gap-4">
-              <span className="text-rose-400 font-serif italic text-5xl">02</span> SÁBADO
-            </h3>
-            <Step time="07:00" title="Acordar" description="Hora de levantar!" icon={Sun} />
-            <Step time="07:30" title="Café na La Sante" description="Tomamos nosso café com calma." icon={Coffee} />
-            <Step time="08:10" title="Pé na estrada" description="Saímos para as pirâmides." icon={Car} />
-            <Step 
-              time="09:30" 
-              title="As Pirâmides" 
-              description="Chegaremos em torno de 9:30. Conhecemos a parte do lado e ao redor até meio dia, podemos comer ali ou ir almoçar na outra pousada." 
-              icon={Mountain}
-            />
-            <Step 
-              time="Tarde" 
-              title="Trilha das 3 Pirâmides" 
-              description="À tarde fazemos a trilha das 3 pirâmides." 
-              icon={Camera}
-            />
-            <Step time="18:00" title="Retorno" description="Retornamos para o Airbnb." icon={Navigation} />
-            <Step 
-              time="19:15 — 19:30" 
-              title="Descanso" 
-              description="Chegada em Braço do Norte. Podemos comer em Grão-Pará no caminho ou podemos pedir delivery caso estejamos muito cansadinhas. E o resto de sábado, vamos ficar de denguinho e mimir." 
-              icon={Heart}
-            />
-          </div>
-        )}
-
-        {activeDay === 3 && (
-          <div className="animate-in fade-in slide-in-from-bottom-10 duration-700">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-12">
-              <h3 className="text-3xl font-light text-slate-800 flex items-center gap-4">
-                <span className="text-rose-400 font-serif italic text-5xl">03</span> DOMINGO
-              </h3>
-              <div className="flex p-1.5 bg-rose-50/80 rounded-full border border-rose-100 self-start backdrop-blur-sm">
-                <button onClick={() => setActiveRoute('active')} className={`px-6 py-2.5 rounded-full text-[10px] font-bold tracking-widest transition-all ${activeRoute === 'active' ? 'bg-white text-rose-500 shadow-sm' : 'text-rose-400'}`}>ATIVA</button>
-                <button onClick={() => setActiveRoute('peaceful')} className={`px-6 py-2.5 rounded-full text-[10px] font-bold tracking-widest transition-all ${activeRoute === 'peaceful' ? 'bg-white text-rose-500 shadow-sm' : 'text-rose-400'}`}>TRANQUILA</button>
-              </div>
-            </div>
-
-            {activeRoute === 'active' ? (
-              <div className="space-y-4 animate-in fade-in duration-500">
-                <div className="mb-8 p-6 bg-rose-50/50 rounded-[2rem] border border-rose-100 flex flex-col gap-2">
-                  <div className="text-[10px] font-bold text-rose-400 uppercase tracking-[0.2em] flex items-center gap-2"><Clock size={12}/> Ritmo do dia</div>
-                  <div className="text-sm text-slate-600 leading-relaxed">
-                    <strong>Acordar:</strong> 07:00 | <strong>Sair:</strong> até 08:00<br/>
-                    <strong>Duração:</strong> ~8h a 10h com paradas (Mais longo e cansativo, mas vale muito pelo visual!)
-                  </div>
-                </div>
-                
-                <Step time="Manhã" title="1. Saída de Braço do Norte" description="Carro já abastecido. Tomamos um café rápido ou comemos algo leve." icon={Car} />
-                <Step time="Manhã" title="2. Serra do Corvo Branco" description="Subida com paisagens MUITO bonitas. Parar nos mirantes, tomar café lá e bater fotos na fenda da rocha (~1h30 subida + paradas)." icon={Mountain} />
-                <Step time="Meio-dia" title="3. Descida e Retorno" description="Descida em direção à rota principal (não precisa ir até Urubici cidade)." icon={Navigation} />
-                <Step time="Almoço" title="4. Almoço no caminho" description="Melhor opção: Rio do Sul. Ou em alguma cidade antes, caso a fome aperte." icon={Utensils} />
-                <Step time="Tarde" title="5. Possível parada leve" description="Estrada bonita por Ituporanga/interior. Apenas uma parada rápida." icon={Camera} />
-                <Step time="Fim de tarde" title="6. Pomerode" description="Só se ainda tivermos energia! Um café, doce ou passeio rápido." icon={Coffee} />
-                <Step time="Noite" title="7. Volta final" description="Chegada em Jaraguá." icon={MapPin} />
-              </div>
-            ) : (
-              <div className="space-y-4 animate-in fade-in duration-500">
-                <div className="mb-8 p-6 bg-rose-50/50 rounded-[2rem] border border-rose-100 flex flex-col gap-2">
-                  <div className="text-[10px] font-bold text-rose-400 uppercase tracking-[0.2em] flex items-center gap-2"><Clock size={12}/> Ritmo do dia</div>
-                  <div className="text-sm text-slate-600 leading-relaxed">
-                    <strong>Acordar:</strong> 08:30 – 09:00<br/>
-                    Dia fluindo sem pressa, ritmo bem calmo.
-                  </div>
-                </div>
-
-                <Step time="Manhã" title="1. Café com calma" description="Café da manhã gostoso em Braço do Norte ou passando em Grão-Pará." icon={Coffee} />
-                <Step time="Meio da Manhã" title="2. Início da viagem" description="Pegamos a estrada tranquilas, sem correria nenhuma." icon={Car} />
-                <Step time="Caminho" title="3. Parada leve" description="Passando por Ituporanga (vista/cachoeira) ou só curtindo a estrada bonita." icon={Camera} />
-                <Step time="Almoço" title="4. Almoço" description="Parada garantida em Rio do Sul (melhor opção) ou Ibirama." icon={Utensils} />
-                <Step time="Tarde" title="5. Pomerode" description="AQUI ENCAIXA PERFEITO! Andar pelo centro, fazer a Rota do Enxaimel e parar num café ou doce." icon={MapPin} />
-                <Step time="Noite" title="6. Volta pra casa" description="Retorno relaxado pra Jaraguá." icon={Heart} />
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      <footer className="max-w-4xl mx-auto mt-32 px-6 text-center border-t border-rose-50 pt-16">
-        <div className="flex justify-center gap-4 mb-8">
-          <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center text-rose-400 shadow-sm">
-            <Heart size={20} className="fill-rose-200" />
-          </div>
-        </div>
-        <p className="text-[10px] font-black uppercase tracking-[0.6em] text-rose-400 mb-3">Boa Viagem</p>
-        <p className="text-xs text-slate-400 italic font-light">Feito com amor para o nosso fim de semana.</p>
-      </footer>
-
-      {/* Estilos Adicionais */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes wiggle {
-          0%, 100% { transform: rotate(-3deg); }
-          50% { transform: rotate(3deg); }
-        }
-        .animate-wiggle {
-          animation: wiggle 2s ease-in-out infinite;
-        }
-        .animate-bounce-slow {
-          animation: bounce 3s infinite;
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-      `}} />
-    </div>
-  );
-};
-
-export default App;
+</body>
+</html>
