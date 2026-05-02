@@ -377,6 +377,15 @@
             margin-bottom: 0.9rem;
         }
 
+        .modal-gif {
+            width: 100%;
+            max-width: 160px;
+            border-radius: 16px;
+            margin: 0 auto 1.2rem;
+            display: block;
+            box-shadow: 0 4px 15px rgba(168, 87, 107, 0.15);
+        }
+
         .modal-text {
             font-family: var(--font-title);
             font-size: 1.24rem;
@@ -451,7 +460,7 @@
                 Queria te convidar para assistir 
                 <span class="movie-name">O Diabo Veste Prada 2</span> comigo. 
                 Nada muito complicado: só um filme, um jantar gostoso depois 
-                e um tempinho pra gente ficar de denguinho.
+                e o fim da noite nós vemos.
             </p>
         </header>
 
@@ -482,7 +491,7 @@
                 </li>
 
                 <li>
-                    <strong>Denguinho:</strong> terminar a noite deitadinhas abraçadinhas com cafuné e beijinhos
+                    <strong>Fim da noite:</strong> deixamos as coisas acontecerem de forma leve... 😉
                 </li>
             </ul>
         </section>
@@ -507,9 +516,19 @@
 
     </main>
 
+    <div class="modal-overlay" id="dateModal">
+        <div class="modal-content">
+            <div class="modal-icon">🎬</div>
+            <p class="modal-text" id="dateModalText">
+                Amei a escolha. Então fica essa data como nossa opção especial. 💕
+            </p>
+            <button class="btn-close" onclick="closeModal('dateModal')">Gostei dessa data</button>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="finalModal">
         <div class="modal-content">
-            <div class="modal-icon">💌</div>
+            <img src="https://media.tenor.com/EF_b2EuB2HMAAAAj/bubu-bubu-dudu.gif" alt="Ursinhos fofos se abraçando" class="modal-gif">
             <p class="modal-text">
                 Estou com saudade Linda! Espero te ver logo 💕
             </p>
